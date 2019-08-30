@@ -3,6 +3,26 @@
     <div class="col-md-6">
       <app-create></app-create>
     </div>
-    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <app-index></app-index>
+    </div>
+  </div>
+  <div>
+    <div class="col-md-12">
+        <form [formGroup]="angForm">
+            <div class="form-group">
+              <label class="col-md-4">Name</label>
+              <input type="text" class="form-control" formControlName="name" #name/>
+              <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['name'].errors.required">
+                  Name is required.
+                </div>
+              </div>
+            </div>
+              <div class="form-group">
+                <button (click)="deleteUser(name.value)" class="btn btn-danger" [disabled]="angForm.pristine || angForm.invalid">Delete User</button>
+              </div>
+          </form>
+    </div>
   </div>
 </div>

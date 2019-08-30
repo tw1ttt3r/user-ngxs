@@ -11,6 +11,12 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 /*ngxs*/
 
+/* state */
+
+import { UserState } from './actions/user.state';
+
+/* state */
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateComponent } from './components/create/create.component';
@@ -25,7 +31,9 @@ import { IndexComponent } from './components/index/index.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxsModule.forRoot(),//para toda la aplicación 
+    NgxsModule.forRoot([
+      UserState  //Registro del state
+    ]),//para toda la aplicación 
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     ReactiveFormsModule
